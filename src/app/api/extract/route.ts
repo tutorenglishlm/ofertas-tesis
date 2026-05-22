@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         'X-Title': 'Extractor Ofertas Tesis'
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-3.3-8b-instruct:free',
+        model: 'meta-llama/llama-3.3-70b-instruct:free',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.1,
         max_tokens: 1024
