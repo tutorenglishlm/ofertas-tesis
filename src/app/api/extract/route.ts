@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         'X-Title': 'Extractor Ofertas Tesis'
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.0-flash-lite-001:free',
+        model: 'google/gemma-4-26b-a4b:free',
         messages: [{ role: 'user', content: prompt }],
         temperature: 0.1,
         max_tokens: 1024
