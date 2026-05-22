@@ -1,4 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
+const data = await res.json()
+if (!data.candidates?.[0]) {
+  return NextResponse.json({ error: JSON.stringify(data) }, { status: 500 })
+}
+const rawText = data.candidates[0].content.parts[0].text || ''
+const match = rawText.match(/\{[\s\S]*\}/)
+if (!match) {
+  return NextResponse.json({ error: 'No JSON found: ' + rawText.slice(0,200) }, { status: 500 })
+}
+const extracted = JSON.parse(match[0])import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
   const { text, plataforma } = await req.json()
