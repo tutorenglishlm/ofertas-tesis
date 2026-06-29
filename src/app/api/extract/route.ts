@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'CF error: ' + JSON.stringify(data).slice(0, 300) }, { status: 500 })
     }
 
-    const rawText = data.result.response
+    const rawText = typeof data.result.response === 'string' ? data.result.response : JSON.stringify(data.result.response)
     const match = rawText.match(/\{[\s\S]*\}/)
     if (!match) {
       return NextResponse.json({ error: 'No JSON: ' + rawText.slice(0, 200) }, { status: 500 })
